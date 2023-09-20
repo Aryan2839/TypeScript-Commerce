@@ -1,0 +1,20 @@
+import dotenv from "dotenv";
+dotenv.config({ path: ".././env" });
+import cors from "cors";
+import express from "express";
+const router = express.Router();
+import { AuthenticationOfData } from "../controlData/control.js";
+import userAuth from "../middleware/auth.js";
+router.use(express.json());
+router.use(cors());
+// router level middleware - to protect route
+router.use("/ChangePassword", userAuth);
+router.use("/userData", userAuth);
+//public route
+router.post("/Register", AuthenticationOfData.userRegistration);
+router.post("/Login", AuthenticationOfData.userLogin);
+//protected route
+router.post("/ChangePassword", AuthenticationOfData.changePassword); //for this we've to create a middleware
+router.get("/userData", AuthenticationOfData.getUserData);
+export default router;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidXNlclJvdXRlcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9kYXRhUm91dGVzL3VzZXJSb3V0ZXMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxNQUFNLE1BQU0sUUFBUSxDQUFDO0FBRTVCLE1BQU0sQ0FBQyxNQUFNLENBQUMsRUFBQyxJQUFJLEVBQUMsVUFBVSxFQUFDLENBQUMsQ0FBQztBQUNqQyxPQUFPLElBQUksTUFBTSxNQUFNLENBQUE7QUFDdkIsT0FBTyxPQUFtQixNQUFNLFNBQVMsQ0FBQztBQUMxQyxNQUFNLE1BQU0sR0FBVyxPQUFPLENBQUMsTUFBTSxFQUFFLENBQUM7QUFDeEMsT0FBTyxFQUFDLG9CQUFvQixFQUFDLE1BQU0sMkJBQTJCLENBQUM7QUFDL0QsT0FBTyxRQUFRLE1BQU0sdUJBQXVCLENBQUM7QUFFN0MsTUFBTSxDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMsSUFBSSxFQUFFLENBQUMsQ0FBQztBQUMzQixNQUFNLENBQUMsR0FBRyxDQUFDLElBQUksRUFBRSxDQUFDLENBQUM7QUFHbkIsNkNBQTZDO0FBQzdDLE1BQU0sQ0FBQyxHQUFHLENBQUMsaUJBQWlCLEVBQUMsUUFBUSxDQUFDLENBQUM7QUFDdkMsTUFBTSxDQUFDLEdBQUcsQ0FBQyxXQUFXLEVBQUMsUUFBUSxDQUFDLENBQUM7QUFJakMsY0FBYztBQUVkLE1BQU0sQ0FBQyxJQUFJLENBQUMsV0FBVyxFQUFFLG9CQUFvQixDQUFDLGdCQUFnQixDQUFDLENBQUM7QUFDaEUsTUFBTSxDQUFDLElBQUksQ0FBQyxRQUFRLEVBQUUsb0JBQW9CLENBQUMsU0FBUyxDQUFDLENBQUM7QUFHdEQsaUJBQWlCO0FBQ2pCLE1BQU0sQ0FBQyxJQUFJLENBQUMsaUJBQWlCLEVBQUUsb0JBQW9CLENBQUMsY0FBYyxDQUFDLENBQUMsQ0FBRSx1Q0FBdUM7QUFDN0csTUFBTSxDQUFDLEdBQUcsQ0FBQyxXQUFXLEVBQUUsb0JBQW9CLENBQUMsV0FBVyxDQUFDLENBQUM7QUFJMUQsZUFBZSxNQUFNLENBQUMifQ==
